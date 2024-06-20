@@ -64,7 +64,7 @@ export default function Page(): JSX.Element {
               className="invert"
               height={24}
               priority
-              src="/vercel.svg"
+              src="/docs/vercel.svg"
               width={100}
             />
           </a>
@@ -78,7 +78,7 @@ export default function Page(): JSX.Element {
               <Image
                 alt="Turborepo"
                 height={614}
-                src="circles.svg"
+                src="/docs/circles.svg"
                 width={614}
               />
             </div>
@@ -95,7 +95,7 @@ export default function Page(): JSX.Element {
                 alt=""
                 height={120}
                 priority
-                src="turborepo.svg"
+                src="/docs/turborepo.svg"
                 width={120}
               />
             </div>

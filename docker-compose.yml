@@ -1,0 +1,30 @@
+services:
+  nginx:
+    restart: always
+    depends_on:
+      - docs
+      - blog
+      - app
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx/prod
+    ports:
+      - "80:80"
+  docs:
+    build:
+      dockerfile: ./apps/docs/Dockerfile
+      context: .
+    environment:
+      - PORT=3001
+  app:
+    build:
+      dockerfile: ./apps/app/Dockerfile
+      context: .
+    environment:
+      - PORT=3000
+  blog:
+    build:
+      dockerfile: ./apps/blog/Dockerfile
+      context: .
+    environment:
+      - PORT=8000

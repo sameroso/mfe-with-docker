@@ -1,0 +1,27 @@
+FROM node:alpine 
+
+RUN mkdir -p /app
+RUN mkdir -p /app/apps/docs
+RUN mkdir -p /app/apps/blog
+RUN mkdir -p /app/apps/web
+
+
+
+WORKDIR /app
+
+COPY package.json yarn.lock ./
+COPY packages/config-eslint ./packages/config-eslint
+COPY packages/config-tailwind ./packages/config-tailwind
+COPY packages/config-typescript ./packages/config-typescript
+COPY packages/ui ./packages/ui
+COPY apps/docs/package.json ./apps/docs
+COPY apps/blog/package.json ./apps/blog
+COPY apps/web/package.json ./apps/web
+COPY .npmrc ./npmrc
+COPY turbo.json ./turbo.json
+
+RUN yarn
+
+COPY ./ ./
+EXPOSE 3000 3001 8000
+CMD [ "yarn" ,"dev" ]
