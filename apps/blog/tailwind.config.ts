@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+import sharedConfig from "@repo/tailwind-config";
+
 
 const config: Config = {
   content: [
@@ -15,6 +17,7 @@ const config: Config = {
       },
     },
   },
+  presets: [sharedConfig],
   plugins: [],
 };
 export default config;
