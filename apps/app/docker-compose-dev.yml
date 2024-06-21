@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      dockerfile: ./apps/app/Dockerfile.dev
+      context: ../../
+    volumes:
+      - /app/node_modules
+      - /app/apps/app/node_modules
+      - /app/apps/app/.next
+      - /packages/ui/node_modules
+      - .:/app/apps/app
+      - ../../packages/ui:/app/packages/ui
+    ports:
+      - 3000:3000
+
+
+

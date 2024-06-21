@@ -1,3 +1,7 @@
+include:
+  - ./apps/app/docker-compose-dev.yml
+  - ./apps/blog/docker-compose-dev.yml
+  - ./apps/docs/docker-compose-dev.yml
 services:
   nginx:
     restart: always
@@ -10,33 +14,6 @@ services:
       context: ./nginx/dev
     ports:
       - "4500:80"
-  docs:
-    build:
-      dockerfile: ./apps/docs/Dockerfile.dev
-      context: .
-    volumes:
-      - /app/node_modules
-      - /app/apps/docs/node_modules
-      - /app/apps/docs/.next
-      - ./apps/docs:/app/apps/docs
-  app:
-    build:
-      dockerfile: ./apps/app/Dockerfile.dev
-      context: .
-    volumes:
-      - /app/node_modules
-      - /app/apps/app/node_modules
-      - /app/apps/app/.next
-      - ./apps/app:/app/apps/app
-  blog:
-    build:
-      dockerfile: ./apps/blog/Dockerfile.dev
-      context: .
-    volumes:
-      - /app/node_modules
-      - /app/node_modules
-      - /app/apps/blog/.next
-      - ./apps/blog:/app/apps/blog
 
 
 

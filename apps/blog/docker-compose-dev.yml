@@ -1,0 +1,16 @@
+services:
+  blog:
+    build:
+      dockerfile: ./apps/blog/Dockerfile.dev
+      context: ../../
+    volumes:
+      - /app/node_modules
+      - /app/apps/blog/node_modules
+      - /app/apps/blog/.next
+      - /app/packages/ui/node_modules
+      - /packages/ui/node_modules
+      - ../../apps/blog:/app/apps/blog
+      - ../../packages/ui:/app/packages/ui
+
+
+

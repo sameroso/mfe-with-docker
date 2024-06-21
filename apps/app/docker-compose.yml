@@ -1,0 +1,7 @@
+services:
+  app:
+    build:
+      dockerfile: ./apps/app/Dockerfile
+      context: ../../
+    environment:
+      - PORT=3000

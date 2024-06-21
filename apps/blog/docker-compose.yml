@@ -1,0 +1,7 @@
+services:
+  blog:
+    build:
+      dockerfile: ./apps/blog/Dockerfile
+      context: ../../
+    environment:
+      - PORT=8000

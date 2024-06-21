@@ -1,0 +1,15 @@
+services:
+  docs:
+    build:
+      dockerfile: ./apps/docs/Dockerfile.dev
+      context: ../../
+    volumes:
+      - /app/node_modules
+      - /app/apps/docs/node_modules
+      - /app/apps/docs/.next
+      - /packages/ui/node_modules
+      - ../..//apps/docs:/app/apps/docs
+      - ../../packages/ui:/app/packages/ui
+
+
+
