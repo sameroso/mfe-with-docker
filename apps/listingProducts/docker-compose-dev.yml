@@ -1,0 +1,19 @@
+services:
+  listingproducts:
+    build:
+      dockerfile: ./apps/listingProducts/Dockerfile.dev
+      context: ../../
+    volumes:
+      - /app/node_modules
+      - /app/apps/listingProducts/node_modules
+      - /app/apps/listingProducts/dist
+      - /packages/ui/node_modules
+      - .:/app/apps/listingProducts
+      - ../../packages/ui:/app/packages/ui
+    ports:
+      - 8080:8080
+    environment:
+      - PORT=8080
+
+
+

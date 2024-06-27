@@ -2,6 +2,7 @@ include:
   - ./apps/app/docker-compose-dev.yml
   - ./apps/blog/docker-compose-dev.yml
   - ./apps/docs/docker-compose-dev.yml
+  - ./apps/listingProducts/docker-compose-dev.yml
 services:
   nginx:
     restart: always
@@ -9,6 +10,7 @@ services:
       - docs
       - blog
       - app
+      - listingproducts
     build:
       dockerfile: Dockerfile.dev
       context: ./nginx/dev

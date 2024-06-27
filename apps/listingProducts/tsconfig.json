@@ -1,0 +1,22 @@
+{
+    "extends": "@repo/typescript-config/react-library.json",
+    "include": [
+        "."
+    ],
+    "exclude": [
+        "dist",
+        "build",
+        "node_modules"
+    ],
+    "compilerOptions": {
+        "outDir": "./dist",
+        "lib": [
+            "ES2015",
+            "DOM"
+        ],
+        "module": "ESNext",
+        "target": "ES6",
+        "noEmit": false,
+        "allowImportingTsExtensions":false
+    }
+}

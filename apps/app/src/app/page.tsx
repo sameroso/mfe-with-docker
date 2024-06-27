@@ -35,6 +35,11 @@ const LINKS = [
     href: "/docs",
     description: "go to docs running on another container",
   },
+  {
+    title: "List Apps",
+    href: "/",
+    description: "Go to the static file to list apps",
+  },
 ];
 
 export default function Page(): JSX.Element {

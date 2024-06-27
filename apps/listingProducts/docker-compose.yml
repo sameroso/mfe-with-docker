@@ -1,0 +1,6 @@
+services:
+  listingproducts:
+    build:
+      dockerfile: ./apps/listingProducts/Dockerfile
+      context: ../../
+    

@@ -1,0 +1,30 @@
+{
+  "name": "listing-products",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Samer Kayali",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack serve  --config ./webpack.config.dev.js",
+     "build": "webpack --config ./webpack.config.js"
+  },
+  "dependencies": {
+    "@repo/ui": "*"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.0",
+    "mini-css-extract-plugin": "^2.9.0",
+    "node-polyfill-webpack-plugin": "^4.0.0",
+    "postcss-loader": "^8.1.1",
+    "postcss-preset-env": "^9.5.14",
+    "sass-loader": "^14.2.1",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^3.4.4",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.5.2",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  }
+}

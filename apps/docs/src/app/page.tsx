@@ -21,25 +21,24 @@ function Gradient({
 
 const LINKS = [
   {
+    title: "Blog",
+    href: "/blog",
+    description: "go to the Blog running on another container",
+  },
+  {
+    title: "App",
+    href: "/app",
+    description: "go to app running on another container",
+  },
+  {
     title: "Docs",
-    href: "https://turbo.build/repo/docs",
-    description: "Find in-depth information about Turborepo features and API.",
+    href: "/docs",
+    description: "go to docs running on another container",
   },
   {
-    title: "Learn",
-    href: "https://turbo.build/repo/docs/handbook",
-    description: "Learn more about monorepos with our handbook.",
-  },
-  {
-    title: "Templates",
-    href: "https://turbo.build/repo/docs/getting-started/from-example",
-    description: "Choose from over 15 examples and deploy with a single click.",
-  },
-  {
-    title: "Deploy",
-    href: "https://vercel.com/new",
-    description:
-      "Instantly deploy your Turborepo to a shareable URL with Vercel.",
+    title: "List Apps",
+    href: "/",
+    description: "Go to the static file to list apps",
   },
 ];
 
