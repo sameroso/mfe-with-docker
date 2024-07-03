@@ -15,7 +15,7 @@ jobs:
       - run: docker build -t sameroso/blog -f ./apps/blog/Dockerfile .
       - run: docker build -t sameroso/listingproducts -f ./apps/listingProducts/Dockerfile .
       - run: docker build -t sameroso/app -f ./apps/app/Dockerfile .
-      - run: docker build -t sameroso/nginx  ./nginx/prod/Dockerfile
+      - run: docker build -t sameroso/nginx -f ./nginx/prod/Dockerfile .
 
       - run: docker push sameroso/docs
       - run: docker push sameroso/blog
