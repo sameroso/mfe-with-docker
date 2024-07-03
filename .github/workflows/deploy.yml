@@ -9,18 +9,57 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            app:
+              - 'apps/app/**'
+            docs:
+              - 'apps/docs/**'
+            listingproducts:
+              - 'apps/listingProducts/**'
+            blog:
+              - 'apps/blog/**'
+            nginx:
+              - 'nginx/prod/**'
       - run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      
+      - name: build docs
+        if: steps.filter.outputs.docs == 'true'
+        run: docker build -t sameroso/docs -f ./apps/docs/Dockerfile .
+        
+      - name: build blog
+        if: steps.filter.outputs.blog == 'true'
+        run: docker build -t sameroso/blog -f ./apps/blog/Dockerfile .
+      
+      - name: build listingproducts
+        if: steps.filter.outputs.listingproducts == 'true'
+        run: docker build -t sameroso/listingproducts -f ./apps/listingProducts/Dockerfile .
+      
+      - name: build app
+        if: steps.filter.outputs.app == 'true'
+        run: docker build -t sameroso/app -f ./apps/app/Dockerfile .
+      
+      - name: build nginx
+        if: steps.filter.outputs.nginx == 'true'
+        run: docker build -t sameroso/nginx ./nginx/prod
 
-      - run: docker build -t sameroso/docs -f ./apps/docs/Dockerfile .
-      - run: docker build -t sameroso/blog -f ./apps/blog/Dockerfile .
-      - run: docker build -t sameroso/listingproducts -f ./apps/listingProducts/Dockerfile .
-      - run: docker build -t sameroso/app -f ./apps/app/Dockerfile .
-      - run: docker build -t sameroso/nginx ./nginx/prod
+      - name: push blog 
+        if: steps.filter.outputs.blog == 'true'
+        run: docker push sameroso/blog
 
-      - run: docker push sameroso/docs
-      - run: docker push sameroso/blog
-      - run: docker push sameroso/listingproducts
-      - run: docker push sameroso/app
+      - name: push docs 
+        if: steps.filter.outputs.docs == 'true'
+        run: docker push sameroso/docs
+
+      - name: push listingproducts 
+        if: steps.filter.outputs.listingproducts == 'true'
+        run: docker push sameroso/listingproducts
+
+      - name: push app 
+        if: steps.filter.outputs.app == 'true'
+        run: docker push sameroso/app
       
       - name: Generate Deployment Package
         run: zip -r deploy.zip * -x "**node_modules**"
@@ -31,7 +70,7 @@ jobs:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           application_name: mfe-docker
-          environment_name: Mfe-docker-env-1
+          environment_name: Mfe-docker-env
           version_label: "mfe-docker-nginx: ${{ github.sha }}"
           region: us-east-1
           deployment_package: deploy.zip
