@@ -5,14 +5,31 @@ include:
   - ./apps/listingProducts/docker-compose.yml
 services:
   nginx:
-    restart: always
-    depends_on:
-      - docs
-      - blog
-      - app
-      - listingproducts
-    build:
-      dockerfile: Dockerfile
-      context: ./nginx/prod
+    image: sameroso/nginx
+    mem_limit: 128m
+    hostname: nginx
     ports:
       - "80:80"
+  blog:
+    mem_limit: 128m
+    hostname: blog
+    image: sameroso/blog 
+    environment:
+      - PORT=8000
+  docs:
+    mem_limit: 128m
+    hostname: docs
+    image: sameroso/docs 
+    environment:
+      - PORT=3001
+  app:
+    mem_limit: 128m
+    hostname: app
+    image: sameroso/app 
+    environment:
+      - PORT=3000
+  listingproducts:
+    mem_limit: 128m
+    hostname: listingproducts
+    image: sameroso/listingproducts 
+  

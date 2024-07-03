@@ -1,0 +1,18 @@
+include: 
+  - ./apps/blog/docker-compose.yml
+  - ./apps/app/docker-compose.yml
+  - ./apps/docs/docker-compose.yml
+  - ./apps/listingProducts/docker-compose.yml
+services:
+  nginx:
+    restart: always
+    depends_on:
+      - docs
+      - blog
+      - app
+      - listingproducts
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx/prod
+    ports:
+      - "80:80"
