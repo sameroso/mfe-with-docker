@@ -61,6 +61,9 @@ jobs:
         if: steps.filter.outputs.app == 'true'
         run: docker push sameroso/app
       
+      - name: push nginx 
+        run: docker push sameroso/nginx
+      
       - name: Generate Deployment Package
         run: zip -r deploy.zip * -x "**node_modules**"
 

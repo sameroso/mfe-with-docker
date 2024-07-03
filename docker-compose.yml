@@ -1,8 +1,3 @@
-include: 
-  - ./apps/blog/docker-compose.yml
-  - ./apps/app/docker-compose.yml
-  - ./apps/docs/docker-compose.yml
-  - ./apps/listingProducts/docker-compose.yml
 services:
   nginx:
     image: sameroso/nginx
