@@ -1,0 +1,8 @@
+{
+    "eslint.workingDirectories": [
+      "./apps/app",
+      "./apps/blog",
+      "./apps/docs",
+      "./apps/listingProducts",
+    ]
+  }
