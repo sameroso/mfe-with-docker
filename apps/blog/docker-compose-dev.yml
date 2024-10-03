@@ -11,6 +11,8 @@ services:
       - /packages/ui/node_modules
       - ../../apps/blog:/app/apps/blog
       - ../../packages/ui:/app/packages/ui
+    ports:
+      - 8000:8000
 
 
 
